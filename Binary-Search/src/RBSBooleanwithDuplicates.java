@@ -67,3 +67,42 @@ public class RBSBooleanwithDuplicates {
         return -1; //no pivot found, array is not rotated
     }
 }
+
+
+
+// another apporach to find boolean with duplicates to avoid finding pivot explicitly
+/*class Solution {
+ public static boolean search(int[] nums, int target) {
+    int start = 0;
+    int end = nums.length - 1;
+
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+
+        if (nums[mid] == target) return true;
+
+        // If duplicates are at start, mid, and end — skip them
+        if (nums[start] == nums[mid] && nums[mid] == nums[end]) {
+            start++;
+            end--;
+        }
+        // Left side is sorted
+        else if (nums[start] <= nums[mid]) {
+            if (nums[start] <= target && target < nums[mid]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        // Right side is sorted
+        else {
+            if (nums[mid] < target && target <= nums[end]) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+    }
+    return false;
+}
+} */
